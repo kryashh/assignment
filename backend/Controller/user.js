@@ -55,15 +55,13 @@ exports.users = async (req, res) => {
 }
 
 exports.addUser = async (req, res) => {
-
     try {
         const user = await schema.users.create({
             username: req.body.username, password: req.body.password,
             phoneNumber: req.body.phoneNumber, address: req.body.address
-        },
-            { P_id: 0, __v: 0 })
-        console.log(user);
-        if (user.length > 0) {
+        })
+        console.log("User ",user);
+        if (user) {
             res.status(200).json({
                 status: "Success",
                 data: {
